@@ -84,6 +84,10 @@ dump_en=bool(args.dump)
 test_filter=str(args.filter)
 test=str(args.test)
 verbosity=str(args.verbosity)
+if test  =="None":
+    test = "base_test"
+if verbosity == "None":
+    verbosity = "UVM_MEDIUM"
 module_name=findModuleName(top_tb_file_name)
 
 command_file = "commands.sh"
@@ -95,4 +99,4 @@ content=vsim(content,cov_en,dump_en,module_name,test,verbosity)
 
 with open(command_file, "w") as f:
     f.write(content)
-#os.system("bash commands.sh")
+os.system("bash commands.sh")
